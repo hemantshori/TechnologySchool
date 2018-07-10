@@ -9,18 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-@RestController
+
 public class TechnologySchoolApplication {
 
 	public static void main(String[] args) {
+		// create servlet container and host it on it..
 		SpringApplication.run(TechnologySchoolApplication.class, args);
 	}
 	
-	@Autowired
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-
-	public String loginPage() {
-System.out.println("HElklllloooooooooooooooooooooooooooooooooooooooo");
-		return "Login";
-	}
+	
 }
