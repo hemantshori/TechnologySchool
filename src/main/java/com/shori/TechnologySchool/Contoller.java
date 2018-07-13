@@ -32,11 +32,26 @@ public class Contoller {
 	
 	}
 
-	@RequestMapping(method=RequestMethod.POST, value="/topics")
-	public void addTopic(@RequestBody Topic topic)
+	@RequestMapping(value="/topics", method=RequestMethod.POST)
+	public void addTopic(@RequestBody Topic sometopic)
 	{
-		topicService.addTopic(topic);
+		topicService.addTopic(sometopic);
 		
 	}
 
+	// to update a topic
+	@RequestMapping(value="/topics/{id}", method=RequestMethod.PUT)
+	public void updateTopic(@RequestBody Topic newTopicName, @PathVariable String id)
+	{
+		topicService.updateTopic(id, newTopicName);
+		
+	}
+	//to remove a topic
+	@RequestMapping(value="/topics/{id}", method=RequestMethod.DELETE)
+	public void removeTopic(@PathVariable String id)
+	{
+		topicService.removeTopic(id);
+		
+	}
+	
 }
