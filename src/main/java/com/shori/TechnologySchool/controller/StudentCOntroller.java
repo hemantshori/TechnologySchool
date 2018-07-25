@@ -22,7 +22,7 @@ public class StudentCOntroller {
 	@Autowired
 		private StudentRepo studentRepo;
 		
-		@RequestMapping("/findall")
+		@RequestMapping(value = "/findall", method = RequestMethod.GET)
 		@ResponseBody
 		public List<Student> findall()
 		{
@@ -32,7 +32,7 @@ public class StudentCOntroller {
 		}
 		
 		
-		@RequestMapping("/{student_id}")
+		@RequestMapping(value ="/{student_id}", method = RequestMethod.GET)
 		@ResponseBody
 		public Optional<Student> getStudentById(@PathVariable int dept_id)
 		{

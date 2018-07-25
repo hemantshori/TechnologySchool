@@ -17,6 +17,8 @@ public class Student {
 	private int batch;
 	private String name;
 	private String category;
+	private String student_branch;
+	
 	
 	
 	
@@ -25,12 +27,13 @@ public class Student {
 	public Student() {
 		super();
 	}
-	public Student(int id, int batch, String name, String category) {
+	public Student(int id, int batch, String name, String category, String student_branch) {
 		super();
 		this.id = id;
 		this.batch = batch;
 		this.name = name;
 		this.category = category;
+		this.student_branch= student_branch;
 	}
 	public int getId() {
 		return id;
@@ -56,7 +59,12 @@ public class Student {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	
+	public String getStudent_branch() {
+		return student_branch;
+	}
+	public void setStudent_branch(String student_branch) {
+		this.student_branch = student_branch;
+	}
 	
 	
 	
