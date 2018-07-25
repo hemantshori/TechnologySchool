@@ -32,12 +32,12 @@ public class DepartmentController {
 	}
 	
 	
-	@RequestMapping("/{dept_id}")
+	@RequestMapping("/{branch_id}")
 	@ResponseBody
-	public Optional<Department> getDepartmentById(@PathVariable int dept_id)
+	public Optional<Department> getDepartmentById(@PathVariable int branch_id)
 	{
 		
-		return departmentRepo.findById(dept_id);
+		return departmentRepo.findById(branch_id);
 }
 
 	

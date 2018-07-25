@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import org.springframework.stereotype.Service;
 
@@ -17,23 +18,30 @@ public class Student {
 	private int batch;
 	private String name;
 	private String category;
-	private String student_branch;
+
 	
-	
-	
-	
-	
+	//member variable
+	@ManyToOne
+	private Department department;
 	
 	public Student() {
 		super();
 	}
-	public Student(int id, int batch, String name, String category, String student_branch) {
+	
+	public Department getDepartment() {
+		return department;
+	}
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+	
+	public Student(int id, int batch, String name, String category, String branch_id) {
 		super();
 		this.id = id;
 		this.batch = batch;
 		this.name = name;
 		this.category = category;
-		this.student_branch= student_branch;
+		this.department= new Department();
 	}
 	public int getId() {
 		return id;
@@ -59,12 +67,7 @@ public class Student {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getStudent_branch() {
-		return student_branch;
-	}
-	public void setStudent_branch(String student_branch) {
-		this.student_branch = student_branch;
-	}
+	
 	
 	
 	

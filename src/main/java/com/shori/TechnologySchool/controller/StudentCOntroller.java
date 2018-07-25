@@ -22,31 +22,33 @@ public class StudentCOntroller {
 	@Autowired
 		private StudentRepo studentRepo;
 		
-		@RequestMapping(value = "/findall", method = RequestMethod.GET)
+		@RequestMapping(value = "/branch/{branch_id}/findallstudents", method = RequestMethod.GET)
 		@ResponseBody
-		public List<Student> findall()
+		public List<Student> findall(@PathVariable String branch_id)
 		{
-			//return studentRepo.findAll();
-			return studentRepo.findAll();
+			return studentRepo.findByid(branch_id);
+			
 			
 		}
 		
 		
-		@RequestMapping(value ="/{student_id}", method = RequestMethod.GET)
+		@RequestMapping(value ="/branch/{branch_id}/students/{student_id}", method = RequestMethod.GET)
 		@ResponseBody
-		public Optional<Student> getStudentById(@PathVariable int dept_id)
+		public Optional<Student> getStudentById(@PathVariable int student_id)
 		{
 			
-			return studentRepo.findById(dept_id);
+			return studentRepo.findById(student_id);
+			
 	}
 
 		
 
 		// add a student
 		
-		@RequestMapping(value = "/addstudent", method = RequestMethod.POST)
-		public void addStudent(@RequestBody Student student)
+		@RequestMapping(value = "/branch/{branch_id}/students", method = RequestMethod.POST)
+		public void addStudent(@RequestBody Student student, @PathVariable String branch_id)
 		{
+			student.setDepartment(new Department());
 			studentRepo.save(student);
 			
 		}
@@ -54,7 +56,7 @@ public class StudentCOntroller {
 		
 			// delete student
 		
-		@RequestMapping(value = "/delete/{student_id}", method = RequestMethod.DELETE)
+		@RequestMapping(value = "/branch/{branch_id}/delete/{student_id}", method = RequestMethod.DELETE)
 		public void deleteStudent(@PathVariable int student_id)
 		{
 			studentRepo.deleteById(student_id);
