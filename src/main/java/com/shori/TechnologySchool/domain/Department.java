@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Service;
 @Service
@@ -12,6 +13,7 @@ public class Department {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	private int branch_id;
 	private String dept_name;
 
