@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,12 +36,12 @@ public class DepartmentController {
 	}
 	
 	
-	@RequestMapping("/{branch_id}")
+	@RequestMapping("/{dept_id}")
 	@ResponseBody
-	public Optional<Department> getDepartmentById(@PathVariable int branch_id)
+	public Optional<Department> getDepartmentById(@PathVariable int dept_id)
 	{
 		
-		Optional<Department> dep =  departmentRepo.findById(branch_id);
+		Optional<Department> dep =  departmentRepo.findById(dept_id);
 	
 		if(dep.isPresent())
 		{
@@ -47,7 +49,7 @@ public class DepartmentController {
 			
 		}else{
 			System.out.println("#########" +dep);	
-			throw new UserNotFoundException("branch not found"+branch_id);
+			throw new UserNotFoundException("branch not found"+dept_id);
 		}
 		
 		
@@ -61,6 +63,7 @@ public class DepartmentController {
 	public ResponseEntity<Object> addDepartment(@RequestBody Department department)
 	{
 		departmentRepo.save(department);
+		
 		URI location = ServletUriComponentsBuilder
 		.fromCurrentRequest()
 		.path("/dept_id")
@@ -69,7 +72,7 @@ public class DepartmentController {
 		
 		return ResponseEntity.created(location).build();
 		
-		//return departmentRepo.save(department);
+
 		
 	}
 	
